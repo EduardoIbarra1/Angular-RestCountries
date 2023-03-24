@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Bandera</th>
+            <th>Nombre oficial</th>
+            <th>Poblacion</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of paises; let i= index">
+            <td>{{i+1}}</td>
+            <td>
+                <img  class="small-flag" [src]="p.flags.png" [alt]="p.flags.alt">
+            </td>
+            <td>{{p.name.official}}</td>
+            <td>{{p.population | number}}</td>
+            <td>
+                <a [routerLink]="['/pais', p.cca2]">Ver mas..</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
