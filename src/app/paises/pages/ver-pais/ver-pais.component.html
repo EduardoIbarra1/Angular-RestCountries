@@ -1,1 +1,52 @@
-<p>ver-pais works!</p>
+<div class="animate__animated animate__fadeIn">
+    <h2>Ver más...</h2>
+<hr>
+
+<div *ngIf="!pais; else divPais" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1>Pais: <small>{{pais[0].name.common}}</small></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img [src]="pais[0].flags.png" alt="pais[0].flags.alt" class="img-thumbnail">
+        </div>
+        
+        <div class="col">
+            <h3>Información</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Nombre official: </strong>{{pais[0].name.official}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Region: </strong>{{pais[0].region}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Capital: </strong>{{pais[0].capital}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Poblacion: </strong>{{pais[0].population | number}}
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+        <h3>Traducciones:</h3>
+        <div class="row">
+            <div class="col">
+                <span *ngFor="let t of pais[0].translations | keyvalue" class="badge bg-primary traducciones">{{ t.value.official}}</span>
+            </div>
+        </div>
+</ng-template>
+</div>
+
+
+

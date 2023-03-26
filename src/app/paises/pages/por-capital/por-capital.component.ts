@@ -30,9 +30,4 @@ export class PorCapitalComponent {
       })
     });
   }
-
-  sugerencias(termino:string){
-    this.bandError = false
-    //TODO: obtener sugerencias
-  }
 }

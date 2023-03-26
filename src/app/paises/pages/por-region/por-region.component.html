@@ -1,22 +1,43 @@
-<h2>Por region</h2>
-<hr>
+<div class="animate__animated animate__fadeIn">
+    <h2>Buscar por region: <small>{{regionActive | titlecase}}</small></h2>
+    <hr>
 
-<div class="row">
-    <div class="col">
-        <app-pais-input 
-        (onEnter)="buscar($event)" 
-        (onDebounce)="sugerencias($event)">
-        </app-pais-input>
+    <h5>Seleccione la region</h5>
+    <!--
+    [class.btn-primary]="region === regionActive"
+
+    [ngClass]="{
+                'btn-primary': regionActive === region,
+                'btn-outline-primary': regionActive !== region
+            }"
+    -->
+
+    <!--LISTADO DE BOTONES CON LAS REGIONES -->
+    <div class="row">
+        <div class="col">
+            <button 
+            *ngFor="let region of regiones" 
+            [class]="getClaseCSS(region)" 
+            (click)="activarRegion(region)">
+                {{region | titlecase}}
+            </button>
+        </div>
     </div>
 </div>
 
+
+<!--MENSAJE DE ERROR SI NO SE ENCUENTRA LA BUSQUEDA-->
 <hr>
 <div *ngIf="bandError" class="alert alert-danger">
-    No se encontro el termino:  {{termino}}.
+    No se encontro el termino:  {{regionActive | titlecase}}.
 </div>
 
+
+<!--TABLA DE PAISES-->
 <div *ngIf="paises.length > 0" class="row">
     <div class="col">
         <app-pais-tabla [paises]="paises"></app-pais-tabla>
     </div>
 </div>
+
+
